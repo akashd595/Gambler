@@ -8,6 +8,7 @@ public class Gambler {
     static int upper = 0;
     static int lower = 0;
     static int betting=0;
+    static int day =0;
 
     public static void main(String[] args) {
 
@@ -40,7 +41,7 @@ public class Gambler {
     public static void uc3(){
         upper = (int)(amount*1.5);
         lower = (int)(amount*0.5);
-
+        day++;
         while (amount < upper && amount > lower){
             Random random = new Random();
             betting = random.nextInt(2);
@@ -49,6 +50,19 @@ public class Gambler {
             } else {
                 amount++;
             }
+        }
+        if(day <= 20){
+
+            uc4();
+
+        }
+    }
+    public static void uc4(){
+        while(day<=20){
+            System.out.println("Day "+day);
+            System.out.println("Amount "+amount);
+            uc3();
+
         }
     }
 }
