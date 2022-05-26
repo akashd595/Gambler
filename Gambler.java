@@ -6,6 +6,10 @@ public class Gambler {
     static int amount=100;
     static int revAmount = 100;
     final static int BET = 1;
+    static int maxInDay= 0;
+    static int maxDay=0;
+    static int minInDay=0;
+    static int minDay=0;
     static int upper = 0;
     static int lower = 0;
     static int betting=0;
@@ -30,6 +34,9 @@ public class Gambler {
         }else {
             System.out.println("Player won by "+(amount-revAmount));
         }
+        System.out.println();
+        System.out.println("on day "+maxDay+" I won the highest "+maxInDay);
+        System.out.println("on day "+minDay+" I lost the most "+minInDay);
 
     }
 
@@ -52,19 +59,15 @@ public class Gambler {
         lower = (int)(amount*0.5);
         day++;
         checkAmount = amount;
+
         while (amount < upper && amount > lower){
-            Random random = new Random();
-            betting = random.nextInt(2);
-            if (betting == 0) {
-                amount--;
-            } else {
-                amount++;
-            }
+           uc2();
         }
         if(day <= 20){
 
             uc4();
         }
+
     }
     public static void uc4(){
         while(day<=20){
@@ -77,8 +80,24 @@ public class Gambler {
     public static void uc5(){
         if(checkAmount > amount){
             daysLost++;
+            uc6();
         }else{
             daysWin++;
+            uc6();
         }
+    }
+    public static void uc6(){
+        int testing = amount - checkAmount;
+        int testLow = checkAmount - amount;
+        if(maxInDay < testing){
+            maxInDay = testing;
+            maxDay = day;
+        }
+
+        if(minInDay < testLow ){
+            minInDay = testLow;
+            minDay = day;
+        }
+
     }
 }
