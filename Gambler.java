@@ -38,6 +38,7 @@ public class Gambler {
         System.out.println("on day "+maxDay+" I won the highest "+maxInDay);
         System.out.println("on day "+minDay+" I lost the most "+minInDay);
 
+        uc7();
     }
 
     static void uc1(){
@@ -98,6 +99,28 @@ public class Gambler {
             minInDay = testLow;
             minDay = day;
         }
+    }
+    public static void uc7(){
+        int testing = amount-revAmount;
+        if(testing > 0){
+            System.out.println("Player won this month and would like to continue playing for next month.");
+            uc1();
+            uc3();
 
+            System.out.println("amount remaining " + amount);
+            System.out.println();
+            System.out.println("Number of days won"+daysWin);
+            System.out.println("Number of days lose"+daysLost);
+            if(amount<revAmount){
+                System.out.println("player lost by "+(revAmount-amount));
+            }else {
+                System.out.println("Player won by "+(amount-revAmount));
+            }
+            System.out.println();
+            System.out.println("on day "+maxDay+" I won the highest "+maxInDay);
+            System.out.println("on day "+minDay+" I lost the most "+minInDay);
+        }else{
+            System.out.println("Player lost and he is depressed");
+        }
     }
 }
